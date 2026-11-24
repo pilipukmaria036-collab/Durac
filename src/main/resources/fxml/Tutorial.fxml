@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.durak.ui.TutorialController"
+      alignment="CENTER"
+      spacing="20"
+      prefWidth="1280"
+      prefHeight="720">
+
+    <padding>
+        <Insets top="24" bottom="24" left="55" right="55"/>
+    </padding>
+
+    <HBox alignment="CENTER">
+        <Label text="НАВЧАННЯ"
+               styleClass="title-label"/>
+    </HBox>
+
+    <Label text="ПІДКИДНИЙ ДУРЕНЬ"
+           styleClass="tutorial-subtitle"/>
+
+    <VBox alignment="CENTER"
+          spacing="12"
+          styleClass="panel, tutorial-panel"
+          maxWidth="820"
+          VBox.vgrow="ALWAYS">
+
+        <padding>
+            <Insets top="35" bottom="35" left="45" right="45"/>
+        </padding>
+
+        <Label fx:id="stepCounter"
+               text="Урок 1 із 8"
+               styleClass="tutorial-counter"/>
+
+        <ProgressBar fx:id="progressBar"
+                     progress="0.14"
+                     prefWidth="650"
+                     styleClass="tutorial-progress"/>
+
+        <Region minHeight="10"/>
+
+        <Label fx:id="lessonTitle"
+               text="Мета гри"
+               styleClass="tutorial-heading"
+               wrapText="true"/>
+
+        <Label fx:id="lessonDescription"
+               text="Навчальний текст"
+               styleClass="tutorial-description"
+               wrapText="true"
+               maxWidth="680"
+               alignment="CENTER"/>
+
+        <Region minHeight="10"/>
+
+        <VBox alignment="CENTER"
+              spacing="15"
+              styleClass="tutorial-example"
+              maxWidth="650">
+
+            <Label fx:id="exampleTitle"
+                   text="Приклад"
+                   styleClass="tutorial-example-title"/>
+
+            <HBox fx:id="exampleCards"
+                  alignment="CENTER"
+                  spacing="18"/>
+
+            <Label fx:id="exampleDescription"
+                   text="Приклад ігрової ситуації"
+                   styleClass="tutorial-example-description"
+                   wrapText="true"
+                   maxWidth="580"/>
+        </VBox>
+
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <Label fx:id="tipLabel"
+               text="Порада"
+               styleClass="tutorial-tip"
+               wrapText="true"
+               maxWidth="650"/>
+
+    </VBox>
+
+    <HBox alignment="CENTER" spacing="15">
+
+        <Button text="НАЗАД"
+                fx:id="backButton"
+                onAction="#onPrevious"
+                prefWidth="145"
+                prefHeight="45"
+                styleClass="btn-ghost"/>
+
+        <Button text="ДАЛІ"
+                fx:id="nextButton"
+                onAction="#onNext"
+                prefWidth="180"
+                prefHeight="45"
+                styleClass="btn-gold"/>
+
+    </HBox>
+
+    <Button text="ДО ГОЛОВНОГО МЕНЮ"
+            onAction="#onMenu"
+            styleClass="btn-ghost"/>
+
+</VBox>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.StackPane?>
+
+<!-- Увесь стіл будує GameViewController у фіксованих координатах 1280x720 і масштабує під вікно. -->
+<StackPane xmlns:fx="http://javafx.com/fxml/1"
+           fx:id="root"
+           fx:controller="com.durak.ui.GameViewController"
+           prefWidth="1280"
+           prefHeight="720"/>

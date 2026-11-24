@@ -1,0 +1,482 @@
+/* =====================================================================
+   DURAK ULTIMATE — єдиний стиль
+   Теми задаються класом на корені сцени (theme-emerald / dark / blue / burgundy)
+   і змінюють лише кольори панелей та полів. Золотий акцент спільний.
+   ===================================================================== */
+
+.root {
+    -gold: #e2c06a;
+    -gold-bright: #f6dc8a;
+    -gold-deep: #b48a32;
+    -text: #f4f1e6;
+    -text-dim: #b9c7bd;
+    -danger: #d9534f;
+
+    -panel-bg: rgba(5, 23, 16, 0.94);
+    -field-bg: #102f22;
+    -field-focus: #153c2a;
+    -line: rgba(226, 192, 106, 0.45);
+    -hover-bg: rgba(255, 255, 255, 0.10);
+
+    -fx-font-family: "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+    -fx-font-size: 14px;
+}
+
+.theme-emerald  { -panel-bg: rgba(5, 23, 16, 0.94);  -field-bg: #102f22; -field-focus: #153c2a; }
+.theme-dark     { -panel-bg: rgba(16, 16, 16, 0.95); -field-bg: #262626; -field-focus: #303030; }
+.theme-blue     { -panel-bg: rgba(6, 16, 38, 0.94);  -field-bg: #0f2347; -field-focus: #15305e; }
+.theme-burgundy { -panel-bg: rgba(36, 8, 14, 0.94);  -field-bg: #3a121c; -field-focus: #4a1824; }
+
+.shell,
+.game-root {
+    -fx-background-color: #050d09;
+}
+
+.label {
+    -fx-text-fill: -text;
+}
+
+/* ---------------- заголовки ---------------- */
+
+.title-label {
+    -fx-font-family: "Georgia", "Times New Roman", serif;
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -gold-bright;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.85), 10, 0.3, 0, 2);
+}
+
+.menu-tagline {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -gold;
+    -fx-padding: 0 0 8 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.9), 6, 0.4, 0, 1);
+}
+
+.setup-decoration {
+    -fx-font-size: 24px;
+    -fx-text-fill: -gold;
+    -fx-font-weight: bold;
+}
+
+.setup-main-title {
+    -fx-font-family: "Georgia", "Times New Roman", serif;
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -gold-bright;
+}
+
+.setup-subtitle {
+    -fx-font-size: 12.5px;
+    -fx-text-fill: -text-dim;
+}
+
+.setup-section-title,
+.settings-section-title {
+    -fx-font-size: 12.5px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -gold;
+}
+
+.error-label {
+    -fx-text-fill: #ff8a85;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+/* ---------------- панелі ---------------- */
+
+.panel {
+    -fx-background-color: -panel-bg;
+    -fx-background-radius: 22px;
+    -fx-border-color: -gold-deep;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 22px;
+    -fx-padding: 28px 40px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 30, 0.3, 0, 10);
+}
+
+.setup-separator .line {
+    -fx-border-color: -line;
+    -fx-border-width: 0.8px;
+}
+
+/* ---------------- кнопки ---------------- */
+
+.button {
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+.btn-gold {
+    -fx-background-color: linear-gradient(to bottom, #e9ca72, #b48a32);
+    -fx-background-radius: 11px;
+    -fx-text-fill: #1b2417;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 8, 0.2, 0, 3);
+}
+.btn-gold:hover {
+    -fx-background-color: linear-gradient(to bottom, #f8e08e, #c89d3f);
+    -fx-effect: dropshadow(gaussian, rgba(246,220,138,0.55), 16, 0.3, 0, 0);
+}
+.btn-gold:pressed { -fx-translate-y: 1px; }
+.btn-gold:disabled { -fx-opacity: 0.45; }
+
+.btn-ghost {
+    -fx-background-color: rgba(0, 0, 0, 0.25);
+    -fx-background-radius: 10px;
+    -fx-border-color: -gold-deep;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-text-fill: -gold-bright;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+.btn-ghost:hover {
+    -fx-background-color: rgba(226, 192, 106, 0.16);
+    -fx-border-color: -gold-bright;
+}
+
+.btn-danger {
+    -fx-background-color: linear-gradient(to bottom, #ee7d72, #b8382f);
+    -fx-text-fill: white;
+}
+.btn-danger:hover {
+    -fx-background-color: linear-gradient(to bottom, #ff948a, #cf4a40);
+    -fx-effect: dropshadow(gaussian, rgba(255,130,120,0.55), 16, 0.3, 0, 0);
+}
+
+.action-button {
+    -fx-font-size: 18px;
+}
+
+.pause-button {
+    -fx-font-size: 18px;
+    -fx-padding: 0;
+    -fx-background-radius: 23px;
+    -fx-border-radius: 23px;
+    -fx-background-color: rgba(0, 0, 0, 0.55);
+}
+
+/* ---------------- головне меню ---------------- */
+
+.menu-button {
+    -fx-background-color: rgba(6, 22, 15, 0.82);
+    -fx-background-radius: 14px;
+    -fx-border-color: -gold-deep;
+    -fx-border-radius: 14px;
+    -fx-border-width: 1.2px;
+    -fx-text-fill: -text;
+    -fx-font-size: 16px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 0 0 26px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 10, 0.2, 0, 3);
+}
+.menu-button:hover {
+    -fx-background-color: rgba(30, 64, 46, 0.92);
+    -fx-border-color: -gold-bright;
+    -fx-text-fill: -gold-bright;
+    -fx-translate-y: -2px;
+}
+.menu-button:pressed { -fx-translate-y: 1px; }
+
+.menu-button-primary {
+    -fx-background-color: linear-gradient(to bottom, #e9ca72, #b48a32);
+    -fx-text-fill: #1b2417;
+    -fx-font-size: 17px;
+    -fx-border-color: #f6dc8a;
+}
+.menu-button-primary:hover {
+    -fx-background-color: linear-gradient(to bottom, #f8e08e, #c89d3f);
+    -fx-text-fill: #1b2417;
+}
+
+.menu-button-quiet {
+    -fx-alignment: CENTER;
+    -fx-padding: 0;
+    -fx-font-size: 14px;
+    -fx-background-color: rgba(0, 0, 0, 0.45);
+    -fx-border-color: rgba(226, 192, 106, 0.4);
+}
+
+/* ---------------- поля вводу ---------------- */
+
+.setup-input {
+    -fx-background-color: -field-bg;
+    -fx-background-radius: 9px;
+    -fx-border-color: rgba(226, 192, 106, 0.35);
+    -fx-border-radius: 9px;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #8fa396;
+    -fx-font-size: 14px;
+    -fx-padding: 0 14px;
+}
+.setup-input:focused {
+    -fx-background-color: -field-focus;
+    -fx-border-color: -gold-bright;
+    -fx-effect: dropshadow(gaussian, rgba(246,220,138,0.25), 9, 0.2, 0, 0);
+}
+
+.setup-combo {
+    -fx-background-color: -field-bg;
+    -fx-background-radius: 9px;
+    -fx-border-color: -gold-deep;
+    -fx-border-radius: 9px;
+    -fx-font-size: 14px;
+}
+.setup-combo .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+.setup-combo .arrow-button { -fx-background-color: transparent; }
+.setup-combo .arrow { -fx-background-color: -gold; }
+
+.combo-box-popup .list-view {
+    -fx-background-color: #13251c;
+    -fx-border-color: #b48a32;
+}
+.combo-box-popup .list-cell {
+    -fx-background-color: #13251c;
+    -fx-text-fill: white;
+}
+.combo-box-popup .list-cell:hover,
+.combo-box-popup .list-cell:filled:selected {
+    -fx-background-color: #2e5c42;
+    -fx-text-fill: #f6dc8a;
+}
+
+/* сегментовані перемикачі (складність, кількість суперників) */
+.segment {
+    -fx-background-color: -field-bg;
+    -fx-background-radius: 10px;
+    -fx-border-color: rgba(226, 192, 106, 0.4);
+    -fx-border-radius: 10px;
+    -fx-text-fill: -text-dim;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+.segment:hover { -fx-border-color: -gold-bright; -fx-text-fill: white; }
+.segment:selected {
+    -fx-background-color: linear-gradient(to bottom, #e9ca72, #b48a32);
+    -fx-text-fill: #1b2417;
+    -fx-border-color: #f6dc8a;
+}
+
+/* ---------------- гравці в налаштуванні ---------------- */
+
+.player-setup-row {
+    -fx-background-color: rgba(255, 255, 255, 0.04);
+    -fx-background-radius: 11px;
+    -fx-border-color: rgba(226, 192, 106, 0.25);
+    -fx-border-radius: 11px;
+    -fx-padding: 8px 10px;
+}
+.player-row-title {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -gold;
+}
+.setup-footer { -fx-font-size: 10px; -fx-text-fill: #758d7c; }
+
+.avatar-choices { -fx-padding: 2px; }
+.avatar-option {
+    -fx-background-color: #173a29;
+    -fx-background-radius: 50%;
+    -fx-border-color: #66806a;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 50%;
+    -fx-cursor: hand;
+}
+.avatar-option:hover {
+    -fx-border-color: -gold-bright;
+    -fx-effect: dropshadow(gaussian, rgba(246,220,138,0.45), 9, 0.3, 0, 0);
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+}
+.avatar-selected {
+    -fx-border-color: #f4d36e;
+    -fx-border-width: 3px;
+    -fx-background-color: #8b6b2c;
+    -fx-effect: dropshadow(gaussian, rgba(244,211,110,0.65), 12, 0.35, 0, 0);
+}
+
+/* ---------------- налаштування ---------------- */
+
+.settings-scroll,
+.settings-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+.settings-scroll .scroll-bar { -fx-background-color: transparent; }
+.settings-scroll .scroll-bar .thumb { -fx-background-color: rgba(226, 192, 106, 0.5); -fx-background-radius: 6px; }
+
+.settings-section {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-background-radius: 15px;
+    -fx-border-color: rgba(226, 192, 106, 0.45);
+    -fx-border-radius: 15px;
+    -fx-padding: 18px 22px;
+}
+.settings-option-title { -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: white; }
+.settings-description { -fx-font-size: 12px; -fx-text-fill: -text-dim; }
+.settings-checkbox { -fx-text-fill: #f0d98e; -fx-font-size: 13px; }
+.settings-status { -fx-text-fill: #9de0a8; -fx-font-size: 13px; -fx-font-weight: bold; }
+
+.check-box .box {
+    -fx-background-color: -field-bg;
+    -fx-border-color: -gold-deep;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+.check-box:selected .box { -fx-background-color: -gold-deep; }
+.check-box .mark { -fx-background-color: #1b2417; }
+
+.slider .track { -fx-background-color: rgba(255, 255, 255, 0.18); -fx-background-radius: 4px; }
+.slider .thumb { -fx-background-color: -gold-bright; -fx-background-radius: 10px; }
+.slider:disabled { -fx-opacity: 0.4; }
+
+/* ---------------- навчання ---------------- */
+
+.tutorial-subtitle { -fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: -gold; }
+.tutorial-panel { -fx-padding: 28px 44px; }
+.tutorial-counter { -fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: -text-dim; }
+.tutorial-heading {
+    -fx-font-family: "Georgia", "Times New Roman", serif;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -gold-bright;
+}
+.tutorial-description { -fx-font-size: 15px; -fx-text-fill: -text; -fx-text-alignment: center; }
+.tutorial-example {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-background-radius: 14px;
+    -fx-border-color: rgba(226, 192, 106, 0.35);
+    -fx-border-radius: 14px;
+    -fx-padding: 16px 22px;
+}
+.tutorial-example-title { -fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: -gold; }
+.tutorial-example-description { -fx-font-size: 13.5px; -fx-text-fill: -text-dim; -fx-text-alignment: center; }
+.tutorial-tip { -fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #9de0a8; -fx-text-alignment: center; }
+.tutorial-progress .track { -fx-background-color: rgba(255, 255, 255, 0.15); -fx-background-radius: 5px; -fx-pref-height: 8px; }
+.tutorial-progress .bar { -fx-background-color: linear-gradient(to right, #b48a32, #f6dc8a); -fx-background-radius: 5px; -fx-padding: 4px; }
+.tutorial-card {
+    -fx-background-color: linear-gradient(to bottom, #fbf6e6, #e8dfc4);
+    -fx-background-radius: 8px;
+    -fx-border-color: #8a7a4a;
+    -fx-border-radius: 8px;
+    -fx-text-fill: #1c1c24;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-min-width: 58px;
+    -fx-pref-height: 78px;
+    -fx-alignment: CENTER;
+    -fx-padding: 6px 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 8, 0.2, 0, 3);
+}
+
+/* =====================================================================
+   ІГРОВИЙ СТІЛ
+   ===================================================================== */
+
+.banner {
+    -fx-background-color: rgba(0, 0, 0, 0.55);
+    -fx-background-radius: 18px;
+    -fx-border-color: rgba(226, 192, 106, 0.55);
+    -fx-border-radius: 18px;
+    -fx-text-fill: #fbeab0;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 4px 16px;
+}
+
+.deck-count {
+    -fx-text-fill: #f4ecd0;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+    -fx-background-radius: 12px;
+}
+
+.deck-marker {
+    -fx-font-size: 58px;
+    -fx-background-color: rgba(0, 0, 0, 0.35);
+    -fx-background-radius: 14px;
+    -fx-border-color: rgba(226, 192, 106, 0.6);
+    -fx-border-radius: 14px;
+    -fx-border-style: dashed;
+}
+
+.trump-badge {
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+    -fx-background-radius: 14px;
+    -fx-border-color: rgba(226, 192, 106, 0.6);
+    -fx-border-radius: 14px;
+}
+.trump-title { -fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: -gold; }
+.trump-symbol { -fx-font-size: 40px; -fx-font-weight: bold; }
+
+/* таблички гравців */
+.plate {
+    -fx-background-color: rgba(4, 16, 11, 0.82);
+    -fx-background-radius: 16px;
+    -fx-border-color: rgba(226, 192, 106, 0.45);
+    -fx-border-radius: 16px;
+    -fx-padding: 6px 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 10, 0.2, 0, 3);
+}
+.plate-active {
+    -fx-border-color: #f6dc8a;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(246,220,138,0.75), 18, 0.35, 0, 0);
+}
+.plate-avatar {
+    -fx-background-color: #173a29;
+    -fx-background-radius: 50%;
+    -fx-border-color: -gold;
+    -fx-border-width: 2px;
+    -fx-border-radius: 50%;
+}
+.plate-name { -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; }
+.plate-info { -fx-text-fill: -text-dim; -fx-font-size: 11.5px; }
+
+.role-chip {
+    -fx-font-size: 9.5px;
+    -fx-font-weight: bold;
+    -fx-padding: 1px 7px;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #101810;
+}
+.role-attack { -fx-background-color: #f0c85a; }
+.role-defend { -fx-background-color: #7fc4ff; }
+.role-take   { -fx-background-color: #ff8e84; }
+.role-throw  { -fx-background-color: #b6e59b; }
+
+.bubble {
+    -fx-background-color: rgba(250, 244, 220, 0.96);
+    -fx-background-radius: 14px;
+    -fx-text-fill: #1d2a1e;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 5px 12px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 8, 0.2, 0, 2);
+}
+
+/* оверлеї: пауза, передача ходу, кінець гри */
+.overlay-dim    { -fx-background-color: rgba(0, 0, 0, 0.62); }
+.overlay-opaque { -fx-background-color: #040b08; }
+.overlay-panel  { -fx-padding: 34px 48px; }
+
+.overlay-title {
+    -fx-font-family: "Georgia", "Times New Roman", serif;
+    -fx-font-size: 38px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 8, 0.3, 0, 2);
+}
+.title-gold { -fx-text-fill: -gold-bright; }
+.title-red  { -fx-text-fill: #ff8f86; }
+.overlay-subtitle { -fx-font-size: 16px; -fx-text-fill: -text; -fx-text-alignment: center; }
+.overlay-hint { -fx-font-size: 13px; -fx-text-fill: -text-dim; }
+.result-line { -fx-font-size: 15px; -fx-text-fill: #d8e6dc; }
+.result-loser { -fx-text-fill: #ff9d96; -fx-font-weight: bold; }

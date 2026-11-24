@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.durak.ui.LocalSetupController"
+           prefWidth="1280"
+           prefHeight="720">
+
+    <VBox alignment="CENTER" spacing="0">
+
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <VBox alignment="CENTER"
+              spacing="17"
+              maxWidth="570"
+              styleClass="panel">
+
+            <VBox alignment="CENTER" spacing="7">
+
+                <Label text="♠  ♥  ♦  ♣"
+                       styleClass="setup-decoration"/>
+
+                <Label text="DURAK ULTIMATE"
+                       styleClass="title-label"/>
+
+                <Label text="ЛОКАЛЬНА ГРА НА ОДНОМУ ПРИСТРОЇ"
+                       styleClass="setup-main-title"/>
+
+                <Label text="Оберіть аватарки та введіть імена гравців"
+                       styleClass="setup-subtitle"/>
+
+            </VBox>
+
+            <Separator styleClass="setup-separator"/>
+
+            <VBox spacing="8" maxWidth="440">
+
+                <Label text="КІЛЬКІСТЬ ГРАВЦІВ"
+                       styleClass="setup-section-title"/>
+
+                <ComboBox fx:id="countBox"
+                          onAction="#onCountChanged"
+                          maxWidth="Infinity"
+                          prefHeight="42"
+                          promptText="Оберіть кількість гравців"
+                          styleClass="setup-combo"/>
+
+            </VBox>
+
+            <VBox spacing="10" maxWidth="440">
+
+                <Label text="УЧАСНИКИ ПАРТІЇ"
+                       styleClass="setup-section-title"/>
+
+                <!-- Гравець 1 -->
+                <VBox fx:id="playerRow1"
+                      spacing="5"
+                      styleClass="player-setup-row">
+
+                    <Label text="ГРАВЕЦЬ 1"
+                           styleClass="player-row-title"/>
+
+                    <HBox alignment="CENTER_LEFT" spacing="12">
+
+                        <TextField fx:id="name1"
+                                   promptText="Ім'я першого гравця"
+                                   HBox.hgrow="ALWAYS"
+                                   prefHeight="42"
+                                   styleClass="setup-input"/>
+
+                        <HBox fx:id="avatarChoices1"
+                              alignment="CENTER"
+                              spacing="5"
+                              styleClass="avatar-choices"/>
+
+                    </HBox>
+                </VBox>
+
+                <!-- Гравець 2 -->
+                <VBox fx:id="playerRow2"
+                      spacing="5"
+                      styleClass="player-setup-row">
+
+                    <Label text="ГРАВЕЦЬ 2"
+                           styleClass="player-row-title"/>
+
+                    <HBox alignment="CENTER_LEFT" spacing="12">
+
+                        <TextField fx:id="name2"
+                                   promptText="Ім'я другого гравця"
+                                   HBox.hgrow="ALWAYS"
+                                   prefHeight="42"
+                                   styleClass="setup-input"/>
+
+                        <HBox fx:id="avatarChoices2"
+                              alignment="CENTER"
+                              spacing="5"
+                              styleClass="avatar-choices"/>
+
+                    </HBox>
+                </VBox>
+
+                <!-- Гравець 3 -->
+                <VBox fx:id="playerRow3"
+                      spacing="5"
+                      styleClass="player-setup-row">
+
+                    <Label text="ГРАВЕЦЬ 3"
+                           styleClass="player-row-title"/>
+
+                    <HBox alignment="CENTER_LEFT" spacing="12">
+
+                        <TextField fx:id="name3"
+                                   promptText="Ім'я третього гравця"
+                                   HBox.hgrow="ALWAYS"
+                                   prefHeight="42"
+                                   styleClass="setup-input"/>
+
+                        <HBox fx:id="avatarChoices3"
+                              alignment="CENTER"
+                              spacing="5"
+                              styleClass="avatar-choices"/>
+
+                    </HBox>
+                </VBox>
+
+                <!-- Гравець 4 -->
+                <VBox fx:id="playerRow4"
+                      spacing="5"
+                      styleClass="player-setup-row">
+
+                    <Label text="ГРАВЕЦЬ 4"
+                           styleClass="player-row-title"/>
+
+                    <HBox alignment="CENTER_LEFT" spacing="12">
+
+                        <TextField fx:id="name4"
+                                   promptText="Ім'я четвертого гравця"
+                                   HBox.hgrow="ALWAYS"
+                                   prefHeight="42"
+                                   styleClass="setup-input"/>
+
+                        <HBox fx:id="avatarChoices4"
+                              alignment="CENTER"
+                              spacing="5"
+                              styleClass="avatar-choices"/>
+
+                    </HBox>
+                </VBox>
+
+            </VBox>
+
+            <Label fx:id="errorLabel"
+                   text=""
+                   wrapText="true"
+                   maxWidth="440"
+                   styleClass="error-label"/>
+
+            <Separator styleClass="setup-separator"/>
+
+            <VBox spacing="10" maxWidth="440">
+
+                <Button text="ПОЧАТИ ГРУ  →"
+                        onAction="#onStart"
+                        maxWidth="Infinity"
+                        prefHeight="47"
+                        styleClass="btn-gold"/>
+
+                <Button text="←  ПОВЕРНУТИСЯ ДО МЕНЮ"
+                        onAction="#onBack"
+                        maxWidth="Infinity"
+                        prefHeight="40"
+                        styleClass="btn-ghost"/>
+
+            </VBox>
+
+            <Label text="GOOD GAME • GOOD LUCK"
+                   styleClass="setup-footer"/>
+
+        </VBox>
+
+        <Region VBox.vgrow="ALWAYS"/>
+
+    </VBox>
+
+</StackPane>

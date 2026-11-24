@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.durak.ui.BotSetupController"
+           prefWidth="1280"
+           prefHeight="720">
+
+    <VBox alignment="CENTER" spacing="16" maxWidth="560" maxHeight="-Infinity" styleClass="panel">
+
+        <Label text="♠  ♥  ♦  ♣" styleClass="setup-decoration"/>
+        <Label text="ГРА ПРОТИ КОМП'ЮТЕРА" styleClass="setup-main-title"/>
+
+        <Separator styleClass="setup-separator"/>
+
+        <VBox spacing="8" maxWidth="440">
+            <Label text="ВАШЕ ІМ'Я ТА АВАТАР" styleClass="setup-section-title"/>
+            <TextField fx:id="nameField" promptText="Ваше ім'я" prefHeight="42" styleClass="setup-input"/>
+            <HBox fx:id="avatarChoices" alignment="CENTER_LEFT" spacing="8" styleClass="avatar-choices"/>
+        </VBox>
+
+        <VBox spacing="8" maxWidth="440">
+            <Label text="СУПЕРНИКИ" styleClass="setup-section-title"/>
+            <HBox fx:id="botCountBox" spacing="8"/>
+        </VBox>
+
+        <VBox spacing="8" maxWidth="440">
+            <Label text="РІВЕНЬ СКЛАДНОСТІ" styleClass="setup-section-title"/>
+            <HBox fx:id="difficultyBox" spacing="8"/>
+            <Label fx:id="difficultyHint" wrapText="true" styleClass="setup-subtitle"/>
+        </VBox>
+
+        <Label fx:id="errorLabel" text="" wrapText="true" maxWidth="440" styleClass="error-label"/>
+
+        <VBox spacing="10" maxWidth="440">
+            <Button text="ПОЧАТИ ГРУ  →" onAction="#onStart"
+                    maxWidth="Infinity" prefHeight="48" styleClass="btn-gold"/>
+            <Button text="←  НАЗАД" onAction="#onBack"
+                    maxWidth="Infinity" prefHeight="40" styleClass="btn-ghost"/>
+        </VBox>
+    </VBox>
+</StackPane>
