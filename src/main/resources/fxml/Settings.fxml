@@ -38,6 +38,17 @@
 
                 <HBox alignment="CENTER_LEFT" spacing="20">
                     <VBox spacing="3" HBox.hgrow="ALWAYS">
+                        <Label text="Колода карт" styleClass="settings-option-title"/>
+                        <Label text="Малюнок лицьової сторони карт" styleClass="settings-description"/>
+                    </VBox>
+                    <ImageView fx:id="deckPreview" fitWidth="48" fitHeight="64"/>
+                    <ComboBox fx:id="deckBox" prefWidth="140" styleClass="setup-combo"/>
+                </HBox>
+
+                <Separator styleClass="setup-separator"/>
+
+                <HBox alignment="CENTER_LEFT" spacing="20">
+                    <VBox spacing="3" HBox.hgrow="ALWAYS">
                         <Label text="Сорочка карт" styleClass="settings-option-title"/>
                         <Label text="Малюнок на звороті карт у колоді та руках суперників" styleClass="settings-description"/>
                     </VBox>

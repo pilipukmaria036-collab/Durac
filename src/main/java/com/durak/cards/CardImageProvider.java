@@ -4,7 +4,9 @@ import com.durak.settings.AppSettings;
 import javafx.scene.image.Image;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /** Завантажує та кешує зображення карт і сорочок. */
@@ -12,13 +14,32 @@ public class CardImageProvider {
 
     private static final Map<String, Image> CACHE = new HashMap<>();
 
-    /** Зображення лицьової сторони карти: hearts_ace.png тощо. */
+    private static final String DEFAULT_FOLDER = "/images/cards/";
+
+    /**
+     * Зображення лицьової сторони карти з обраної в налаштуваннях колоди: hearts_ace.png тощо.
+     * Якщо в обраній колоді такого файлу немає — береться карта зі стандартної колоди.
+     */
     public static Image getImage(Card card) {
         if (card == null) return null;
 
-        String suit = card.getSuit().name().toLowerCase();
-        String rank = card.getRank().name().toLowerCase();
-        return load("/images/cards/" + suit + "_" + rank + ".png");
+        String fileName = card.getSuit().name().toLowerCase() + "_" + card.getRank().name().toLowerCase() + ".png";
+        Image image = load(AppSettings.getDeckFolder() + fileName);
+        return image != null ? image : load(DEFAULT_FOLDER + fileName);
+    }
+
+    /** Назви колод, для яких у resources справді є картинки (перевіряється наявність hearts_ace.png). */
+    public static List<String> getAvailableDecks() {
+        List<String> result = new ArrayList<>();
+        for (Map.Entry<String, String> deck : AppSettings.DECKS.entrySet()) {
+            if (CardImageProvider.class.getResource(deck.getValue() + "hearts_ace.png") != null) {
+                result.add(deck.getKey());
+            }
+        }
+        if (result.isEmpty()) {
+            result.add("Піксельна");
+        }
+        return result;
     }
 
     /** Сорочка карти за вибором у налаштуваннях (із запасним варіантом cards/back.png). */

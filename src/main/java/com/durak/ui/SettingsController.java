@@ -2,7 +2,10 @@ package com.durak.ui;
 
 import com.durak.audio.Sound;
 import com.durak.audio.SoundManager;
+import com.durak.cards.Card;
 import com.durak.cards.CardImageProvider;
+import com.durak.cards.Rank;
+import com.durak.cards.Suit;
 import com.durak.settings.AppSettings;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -15,6 +18,8 @@ import javafx.scene.image.ImageView;
 public class SettingsController {
 
     @FXML private ComboBox<String> themeBox;
+    @FXML private ComboBox<String> deckBox;
+    @FXML private ImageView deckPreview;
     @FXML private ComboBox<String> cardBackBox;
     @FXML private ImageView cardBackPreview;
     @FXML private CheckBox fullscreenCheck;
@@ -37,6 +42,11 @@ public class SettingsController {
 
         themeBox.getItems().setAll(AppSettings.THEMES);
         themeBox.setValue(AppSettings.getTheme());
+
+        deckBox.getItems().setAll(CardImageProvider.getAvailableDecks());
+        String deck = AppSettings.getDeck();
+        deckBox.setValue(deckBox.getItems().contains(deck) ? deck : deckBox.getItems().get(0));
+        updateDeckPreview();
 
         cardBackBox.getItems().setAll(AppSettings.CARD_BACKS);
         cardBackBox.setValue(AppSettings.getCardBack());
@@ -61,6 +71,12 @@ public class SettingsController {
             if (loading || themeBox.getValue() == null) return;
             AppSettings.setTheme(themeBox.getValue());
             ThemeManager.apply(themeBox.getScene());
+            saved();
+        });
+        deckBox.setOnAction(e -> {
+            if (loading || deckBox.getValue() == null) return;
+            AppSettings.setDeck(deckBox.getValue());
+            updateDeckPreview();
             saved();
         });
         cardBackBox.setOnAction(e -> {
@@ -114,6 +130,12 @@ public class SettingsController {
     private void updateSliderState() {
         musicSlider.setDisable(!musicCheck.isSelected());
         soundsSlider.setDisable(!soundsCheck.isSelected());
+    }
+
+    private void updateDeckPreview() {
+        var image = CardImageProvider.getImage(new Card(Suit.SPADES, Rank.ACE));
+        deckPreview.setImage(image);
+        deckPreview.setSmooth(!CardImageProvider.isPixelArt(image));
     }
 
     private void updateCardBackPreview() {

@@ -1,12 +1,25 @@
 package com.durak.settings;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.prefs.Preferences;
 
 /** Усі налаштування гри. Зберігаються між запусками (java.util.prefs). */
 public final class AppSettings {
 
     public static final List<String> THEMES = List.of("Смарагдова", "Темна", "Синя", "Бордова");
+    /**
+     * Колоди: назва в налаштуваннях → папка з картинками в resources.
+     * Щоб додати нову колоду, покладіть її файли в окрему папку й додайте рядок у блок нижче.
+     */
+    public static final Map<String, String> DECKS = new LinkedHashMap<>();
+
+    static {
+        DECKS.put("Піксельна", "/images/cards/");
+        DECKS.put("Класична", "/images/decks/classic/");
+    }
+
     public static final List<String> CARD_BACKS = List.of("Синя", "Червона", "Зелена");
     public static final List<String> SPEEDS = List.of("Швидко", "Звичайно", "Повільно");
 
@@ -18,6 +31,7 @@ public final class AppSettings {
     private static final String K_SFX_ON = "soundsEnabled";
     private static final String K_SFX_VOL = "soundsVolume";
     private static final String K_CARD_BACK = "cardBack";
+    private static final String K_DECK = "deck";
     private static final String K_SPEED = "animationSpeed";
     private static final String K_HINTS = "hints";
     private static final String K_FULLSCREEN = "fullscreen";
@@ -40,6 +54,22 @@ public final class AppSettings {
         if (THEMES.contains(theme)) {
             PREFS.put(K_THEME, theme);
         }
+    }
+
+    public static String getDeck() {
+        String value = PREFS.get(K_DECK, "Піксельна");
+        return DECKS.containsKey(value) ? value : "Піксельна";
+    }
+
+    public static void setDeck(String deck) {
+        if (DECKS.containsKey(deck)) {
+            PREFS.put(K_DECK, deck);
+        }
+    }
+
+    /** Папка поточної колоди, напр. "/images/decks/classic/". */
+    public static String getDeckFolder() {
+        return DECKS.get(getDeck());
     }
 
     public static String getCardBack() {
@@ -167,7 +197,7 @@ public final class AppSettings {
 
     public static void resetToDefaults() {
         for (String key : new String[]{K_THEME, K_MUSIC_ON, K_MUSIC_VOL, K_SFX_ON, K_SFX_VOL,
-                K_CARD_BACK, K_SPEED, K_HINTS, K_FULLSCREEN}) {
+                K_CARD_BACK, K_DECK, K_SPEED, K_HINTS, K_FULLSCREEN}) {
             PREFS.remove(key);
         }
     }
