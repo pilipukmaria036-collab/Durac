@@ -30,8 +30,22 @@ public final class SceneManager {
         mainStage = stage;
         mainStage.setMinWidth(960);
         mainStage.setMinHeight(560);
-        mainStage.setFullScreenExitHint("F11 — вийти з повноекранного режиму");
+        // Порожній підказкою не показуємо банер щоразу при вході в повний екран.
+        mainStage.setFullScreenExitHint("");
         mainStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+
+        // Перемикання між вікнами (Alt+Tab) може вивести JavaFX з повного екрана.
+        // Якщо в налаштуваннях повний екран увімкнений — повертаємо його, коли вікно знову активне.
+        mainStage.focusedProperty().addListener((obs, was, now) -> {
+            if (now) {
+                restoreFullscreenIfNeeded();
+            }
+        });
+        mainStage.iconifiedProperty().addListener((obs, was, now) -> {
+            if (!now) {
+                restoreFullscreenIfNeeded();
+            }
+        });
     }
 
     public static Stage getStage() {
@@ -51,38 +65,53 @@ public final class SceneManager {
     }
 
     /**
-     * Показує готовий корінь як нову сцену. Для ігрового столу (game = true) фон малює сам стіл.
-     * Розмір вікна зберігається між екранами.
+     * Показує готовий корінь. Сцена створюється один раз, далі міняється лише її корінь —
+     * так вікно не «збивається» і не виходить із повноекранного режиму при зміні екрана.
+     * Для ігрового столу (game = true) фон малює сам стіл.
      */
     public static Scene showRoot(Parent content, String title, boolean game) {
         requireStage();
-        double w = DEFAULT_WIDTH;
-        double h = DEFAULT_HEIGHT;
-        if (mainStage.getScene() != null) {
-            w = mainStage.getScene().getWidth();
-            h = mainStage.getScene().getHeight();
+        javafx.scene.layout.StackPane shell = ThemeManager.createShell(content, game ? null : "bg_main");
+
+        Scene scene = mainStage.getScene();
+        if (scene == null) {
+            scene = new Scene(shell, DEFAULT_WIDTH, DEFAULT_HEIGHT);
+            scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+                if (event.getCode() == KeyCode.F11) {
+                    toggleFullscreen();
+                    event.consume();
+                }
+            });
+            mainStage.setScene(scene);
+        } else {
+            scene.setOnKeyPressed(null);   // обробники попереднього екрана більше не потрібні
+            scene.setRoot(shell);
         }
-        Scene scene = new Scene(ThemeManager.createShell(content, game ? null : "bg_main"), w, h);
         ThemeManager.apply(scene);
 
-        scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-            if (event.getCode() == KeyCode.F11) {
-                toggleFullscreen();
-                event.consume();
-            }
-        });
-
         mainStage.setTitle(title);
-        mainStage.setScene(scene);
-        mainStage.show();
+        if (!mainStage.isShowing()) {
+            mainStage.show();
+        }
         return scene;
     }
 
     public static void toggleFullscreen() {
         if (mainStage != null) {
             boolean value = !mainStage.isFullScreen();
-            mainStage.setFullScreen(value);
             AppSettings.setFullscreen(value);
+            mainStage.setFullScreen(value);
+        }
+    }
+
+    private static void restoreFullscreenIfNeeded() {
+        if (mainStage != null && AppSettings.isFullscreen()
+                && !mainStage.isFullScreen() && !mainStage.isIconified()) {
+            Platform.runLater(() -> {
+                if (AppSettings.isFullscreen() && !mainStage.isFullScreen() && !mainStage.isIconified()) {
+                    mainStage.setFullScreen(true);
+                }
+            });
         }
     }
 
