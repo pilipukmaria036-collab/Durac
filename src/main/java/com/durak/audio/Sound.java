@@ -19,7 +19,7 @@ public enum Sound {
     /** Карти йдуть у відбій. */
     CARD_DISCARD("card_discard"),
     /** Перетасовка колоди на початку гри. */
-    SHUFFLE("shuffle"),
+    SHUFFLE(""),
     /** Починається твій хід. */
     TURN("turn"),
     /** Спроба нелегального ходу. */

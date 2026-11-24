@@ -52,7 +52,7 @@ public final class SoundManager {
         if (MISSING.containsKey(sound)) {
             return null;
         }
-        URL url = findResource("/sounds/" + sound.getFileName());
+        URL url = findResource("/sounds/music/" + sound.getFileName());
         if (url == null) {
             MISSING.put(sound, Boolean.TRUE);
             return null;
